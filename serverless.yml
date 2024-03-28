@@ -1,0 +1,27 @@
+org: otonbaevrus
+app: nodejs-aws-be
+service: nodejs-aws-be
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  httpApi:
+    cors: true
+
+functions:
+  productListHandler:
+    handler: index.productListHandler
+    events:
+      - httpApi:
+          path: /products
+          method: get
+  getProductById:
+    handler: index.getProductById
+    events:
+      - httpApi:
+          path: /products/{productId}
+          method: get
+
+plugins:
+  - serverless-esbuild
