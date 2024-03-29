@@ -1,4 +1,4 @@
-import productList from "../data/productList.json";
+const productList = require("../data/productList.json");
 import { Handler } from "aws-lambda";
 
 export const productListHandler: Handler = async () => {
@@ -13,5 +13,9 @@ export const productListHandler: Handler = async () => {
     return response;
   } catch (error) {
     console.error(error);
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ message: "Internal Server Error" }),
+    };
   }
 };

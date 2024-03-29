@@ -1,4 +1,4 @@
-import productList from "../data/productList.json";
+const productList = require("../data/productList.json");
 import { Handler } from "aws-lambda";
 import _ from "underscore";
 
